@@ -14,7 +14,7 @@
 
 Java 内存模型规定，**对于多个线程共享的变量，存储在主内存当中**，**每个线程都有自己独立的工作内存，并且线程只能访问自己的工作内存，不可以访问其它线程的工作内存**。**工作内存中保存了主内存中共享变量的副本**，线程要操作这些共享变量，只能通过操作工作内存中的副本来实现，操作完毕之后再同步回到主内存当中，其 JVM 模型大致如下图。
 
-![内存可见性](Java JUC/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTYwMTI3MTAxNDE4NDIx.png)
+![内存可见性](JavaJUC/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTYwMTI3MTAxNDE4NDIx.png)
 
 
 JVM 模型规定：1) 线程对共享变量的所有操作必须在自己的内存中进行，不能直接从主内存中读写; 2) 不同线程之间无法直接访问其它线程工作内存中的变量，线程间变量值的传递需要通过主内存来完成。这样的规定可能导致得到后果是：线程对共享变量的修改没有即时更新到主内存，或者线程没能够即时将共享变量的最新值同步到工作内存中，从而使得线程在使用共享变量的值时，该值并不是最新的。这就引出了内存可见性。
@@ -197,7 +197,7 @@ class AtomicDemo implements Runnable{
 
   当且仅当 **V 的值等于 A** 时，CAS 通过原子方式用新值 B 来更新 V的值，否则不会执行任何操作。
 
-![image-20200528090822776](Java JUC/image-20200528090822776.png)
+![image-20200528090822776](JavaJUC/image-20200528090822776.png)
 
 
 
@@ -791,7 +791,7 @@ class Consumer implements Runnable {
 }
 ```
 
-![生产者与消费者问题](Java JUC/image-20200604170401451.png)
+![生产者与消费者问题](JavaJUC/image-20200604170401451.png)
 
 
 
@@ -936,7 +936,7 @@ class AlternateDemo{
 
 
 
-![线程按序交替运行结果](Java JUC/image-20200605095151322.png)
+![线程按序交替运行结果](JavaJUC/image-20200605095151322.png)
 
 
 
@@ -1245,7 +1245,7 @@ public class TestScheduledThreadPool {
 
 Fork/Join 框架：就是在必要的情况下，将一个大任务，进行拆分(fork)成 若干个小任务（拆到不可再拆时），再将一个个的小任务运算的结果进 行 join 汇总。
 
-![image-20200605153815710](Java JUC/image-20200605153815710.png)
+![image-20200605153815710](JavaJUC/image-20200605153815710.png)
 
 
 
